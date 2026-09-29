@@ -28,3 +28,4 @@ npm test
 Aquest projecte és el punt de partida per a una pràctica de DevOps amb GitHub.
 
 Els alumnes hauran de refactoritzar el JavaScript, ampliar els tests i configurar GitHub Actions, Pull Requests, protecció de `main`, GitHub Pages i Dependabot.
+// probar el rules
