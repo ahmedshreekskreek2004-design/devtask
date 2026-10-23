@@ -357,6 +357,14 @@ button {
   margin-bottom: 0;
 }
 
+.task-controls {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
 /* =========================
    Filters
    ========================= */
@@ -407,6 +415,32 @@ button {
 
   box-shadow:
     0 5px 15px rgba(79, 70, 229, 0.25);
+}
+
+.clear-completed-button {
+  background: #1e293b;
+
+  color: var(--muted);
+
+  padding: 8px 15px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 999px;
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition: all 0.2s ease;
+}
+
+.clear-completed-button:hover {
+  background: #273449;
+
+  color: var(--text);
 }
 
 /* =========================
@@ -465,6 +499,10 @@ button {
   border-color: #34445f;
 
   box-shadow: var(--shadow-small);
+}
+
+.task-list li.completed .task-text {
+  text-decoration: line-through;
 }
 
 .empty-message {
@@ -641,6 +679,14 @@ button {
     width: 100%;
   }
 
+  .task-controls {
+    width: 100%;
+
+    align-items: stretch;
+
+    flex-direction: column;
+  }
+
   .filter {
     flex: 1;
 
@@ -666,4 +712,3 @@ button {
     font-size: 2.2rem;
   }
 }
-

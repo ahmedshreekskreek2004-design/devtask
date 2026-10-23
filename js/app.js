@@ -2,6 +2,7 @@ import {
   createTask,
   isValidTask,
   filterTasks,
+  clearCompletedTasks,
   getTaskStats
 } from "./funcion.js";
 let tasks = [];
@@ -16,6 +17,7 @@ const emptyMessage = document.querySelector("#empty-message");
 const totalTasks = document.querySelector("#total-tasks");
 const pendingTasks = document.querySelector("#pending-tasks");
 const completedTasks = document.querySelector("#completed-tasks");
+const clearCompletedButton = document.querySelector("#clear-completed");
 
 
 
@@ -130,6 +132,12 @@ taskList.addEventListener("change", event => {
     task.completed = checkbox.checked;
   }
 
+  saveTasks();
+  renderTasks();
+});
+
+clearCompletedButton.addEventListener("click", () => {
+  tasks = clearCompletedTasks(tasks);
   saveTasks();
   renderTasks();
 });
