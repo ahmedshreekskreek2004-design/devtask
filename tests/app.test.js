@@ -4,6 +4,7 @@ import {
   createTask,
   isValidTask,
   filterTasks,
+  clearCompletedTasks,
   getTaskStats
 } from "../js/funcion.js";
 describe("isValidTask", () => {
@@ -46,6 +47,28 @@ describe("filterTasks", () => {
 
   it("retorna només les tasques completades", () => {
     expect(filterTasks(tasks, "completed")).toHaveLength(1);
+  });
+});
+
+describe("clearCompletedTasks", () => {
+  it("elimina las tareas completadas y conserva las pendientes", () => {
+    const tasks = [
+      { id: 1, text: "Tasca pendent", completed: false },
+      { id: 2, text: "Tasca completada", completed: true }
+    ];
+
+    expect(clearCompletedTasks(tasks)).toEqual([tasks[0]]);
+    expect(tasks).toHaveLength(2);
+  });
+
+  it("retorna una lista buida quan totes les tasques estan completades", () => {
+    expect(clearCompletedTasks([
+      { id: 1, text: "Tasca completada", completed: true }
+    ])).toEqual([]);
+  });
+
+  it("retorna una llista buida quan no hi ha tasques", () => {
+    expect(clearCompletedTasks([])).toEqual([]);
   });
 });
 

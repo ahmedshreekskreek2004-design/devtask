@@ -31,10 +31,15 @@
     <section class="tasks-section">
       <div class="section-header">
         <h2>Les meves tasques</h2>
-        <div class="filters">
-          <button class="filter active" data-filter="all">Totes</button>
-          <button class="filter" data-filter="pending">Pendents</button>
-          <button class="filter" data-filter="completed">Completades</button>
+        <div class="task-controls">
+          <div class="filters">
+            <button class="filter active" data-filter="all">Totes</button>
+            <button class="filter" data-filter="pending">Pendents</button>
+            <button class="filter" data-filter="completed">Completades</button>
+          </div>
+          <button id="clear-completed" class="clear-completed-button">
+            Eliminar completades
+          </button>
         </div>
       </div>
 
