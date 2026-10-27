@@ -4,7 +4,7 @@
 
 DevTasks es una aplicación web para gestionar tareas.
 
-La aplicación permite crear tareas, filtrarlas y consultar estadísticas relacionadas con ellas.
+La aplicación permite crear y eliminar tareas, marcarlas como completadas, filtrar la lista y consultar estadísticas. Las tareas completadas se muestran tachadas y pueden eliminarse en conjunto. Los datos se guardan en el almacenamiento local del navegador.
 
 El proyecto se ha desarrollado aplicando un flujo de trabajo DevOps con Git, GitHub, GitHub Actions, tests automatizados, Pull Requests, GitHub Pages y Dependabot.
 
@@ -20,7 +20,7 @@ npm install
 
 ## Tests
 
-Los tests automatizados se encuentran en la carpeta `test/`.
+Los tests automatizados se encuentran en la carpeta `tests/`.
 
 Para ejecutar los tests localmente:
 
@@ -33,6 +33,7 @@ Los tests comprueban el funcionamiento de las principales funciones de la aplica
 * `isValidTask`
 * `createTask`
 * `filterTasks`
+* `clearCompletedTasks`
 * `getTaskStats`
 
 ## GitHub Actions
@@ -110,28 +111,27 @@ Dependabot comprueba periódicamente las actualizaciones de las dependencias del
 
 El proyecto separa la lógica de negocio de la manipulación del DOM.
 
-### `app.js`
+### `js/app.js`
 
-El archivo `app.js` contiene la lógica relacionada con la interfaz gráfica y la manipulación del DOM.
+El archivo `js/app.js` gestiona la interfaz, los eventos, la manipulación del DOM y la persistencia de tareas en `localStorage`. También aplica la clase `completed` a las tareas marcadas, cuyo texto aparece tachado mediante CSS.
 
-Se encarga de interactuar con los elementos de la página y de mostrar los resultados al usuario.
+### `funcion.js`
 
-### `taskManager.js`
-
-El archivo `taskManager.js` contiene la lógica de negocio independiente del navegador.
+El archivo `js/funcion.js` contiene la lógica de negocio independiente del navegador.
 
 Incluye funciones como:
 
 * `createTask`
-* `filterTasks`
-* `getTaskStats`
 * `isValidTask`
+* `filterTasks`
+* `clearCompletedTasks`
+* `getTaskStats`
 
 Estas funciones pueden ejecutarse y probarse independientemente de la interfaz gráfica.
 
-### `test/`
+### `tests/`
 
-La carpeta `test/` contiene los tests automatizados de las funciones de `taskManager.js`.
+La carpeta `tests/` contiene los tests unitarios de las funciones de `js/funcion.js`.
 
 Los tests se ejecutan con:
 
@@ -147,15 +147,18 @@ DevTasks/
 │   ├── workflows/
 │   │   ├── ci.yml
 │   │   └── deploy.yml
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── copilot-instructions.md
 │   └── dependabot.yml
 ├── css/
+│   └── style.css
 ├── js/
 │   ├── app.js
 │   └── funcion.js
-├── test/
+├── tests/
+│   └── app.test.js
 ├── index.html
 ├── package.json
 ├── package-lock.json
 └── README.md
 ```
-
